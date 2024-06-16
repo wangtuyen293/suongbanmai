@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sương Ban Mai</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-8fZGEFx9b3SP/b5tysa9eT6AKn5fPMCMIsj3IrveZ4Vr5F58jUur6jvHEt0tQk0Xr0WtZ91bFET+R0uAzzm2LA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  </head>
+  <body>
+    <!-- backdrop -->
+    <div>
+      <img
+        src="../template/image/backdrop_1.png"
+        alt="Backdrop"
+        style="width: 100%"
+      />
+    </div>
+    <!-- backdrop -->
+    <div class="container">
+      <div class="flower"></div>
+      <div class="leaf"></div>
+    </div>
+    <!-- canvas -->
+    <div class="d-flex justify-content-center">
+      <div class="card mb-3 card-custom">
+        <div class="row no-gutters w-100">
+          <div class="col-md-4 d-flex align-items-center">
+            <img
+              src="../template/image/canvas.jpg"
+              class="img-fluid rounded-start card-img-custom"
+              alt="canvas"
+            />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body card-body-custom">
+              <h3 class="card-title">
+                Với mỗi lượt chia sẻ kèm Hastag #SuongBanMaiQuilling
+              </h3>
+              <h4 class="card-text">Bạn đã đồng thời</h4>
+              <h3 class="card-text">
+                TRAO CHO CHỊ LÁNG VÀ BÉ THỎ THÊM MỘT CƠ HỘI ĐỂ MỌI NGƯỜI BIẾT
+                ĐẾN
+              </h3>
+              <h4>Giúp chị tăng thu nhập trang trải</h4>
+
+              <!-- Modal -->
+              <!-- Main Modal -->
+              <div
+                class="modal fade"
+                id="exampleModal"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">
+                        Thông tin cá nhân
+                      </h5>
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form id="userInfoForm">
+                        <div class="form-group">
+                          <label for="inputName">Tên:</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="inputName"
+                            placeholder="Nhập tên của bạn"
+                            required
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label for="genderSelect">Giới tính:</label>
+                          <div
+                            id="genderSelect"
+                            class="btn-group btn-group-toggle"
+                            data-toggle="buttons"
+                          >
+                            <label class="btn btn-secondary">
+                              <input
+                                type="radio"
+                                name="gender"
+                                id="option1"
+                                autocomplete="off"
+                                value="Nam"
+                              />
+                              Nam
+                            </label>
+                            <label class="btn btn-secondary">
+                              <input
+                                type="radio"
+                                name="gender"
+                                id="option2"
+                                autocomplete="off"
+                                value="Nữ"
+                              />
+                              Nữ
+                            </label>
+                            <label class="btn btn-secondary">
+                              <input
+                                type="radio"
+                                name="gender"
+                                id="option3"
+                                autocomplete="off"
+                                value="Khác"
+                              />
+                              Khác
+                            </label>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal"
+                      >
+                        Quay lại
+                      </button>
+                      <button class="btn btn-danger" onclick="generateImage()">
+                        Đồng ý
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Modal for Displaying Generated Image -->
+              <div
+                class="modal fade"
+                id="imageModal"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="imageModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="imageModalLabel">
+                        Cảm ơn bạn đã lan toả dự án
+                      </h5>
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body text-center">
+                      <canvas
+                        id="generatedCanvas"
+                        width="1587"
+                        height="2245"
+                        style="display: none"
+                      ></canvas>
+                      <img
+                        id="generatedImage"
+                        src=""
+                        alt="Generated Image"
+                        style="max-width: 80%"
+                      />
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal"
+                      >
+                        Đóng
+                      </button>
+                      <a id="downloadButton" class="btn btn-primary"
+                        >Tải xuống hình ảnh</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Trigger Modal Button -->
+              <div class="text-center mt-5">
+                <button
+                  type="button"
+                  class="btn btn-danger md_button"
+                  data-toggle="modal"
+                  data-target="#exampleModal"
+                >
+                  <i class="fas fa-arrow-circle-right"></i> Bấm vào đây để lan
+                  toả
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- canvas -->
+    <br /><br /><br /><br /><br />
+
+    <!-- Slide -->
+    <div style="align-items: center">
+      <h4 style="text-align: center;color: #7a3d2c;">Một số hình ảnh của công việc chị Láng</h4>
+    </div>
+    <div class="carousel-container">
+      <div class="carousel">
+        <img src="../template/slide/slide_1.png" alt="Slide" />
+        <img src="../template/slide/slide_2.png" alt="Slide" />
+        <img src="../template/slide/slide_9.png" alt="Slide" />
+        <img src="../template/slide/slide_5.png" alt="Slide" />
+        <img src="../template/slide/slide_6.png" alt="Slide" />
+        <img src="../template/slide/slide_7.png" alt="Slide" />
+        <img src="../template/slide/slide_8.png" alt="Slide" />
+        <!-- repeat -->
+        <img src="../template/slide/slide_1.png" alt="Slide" />
+        <img src="../template/slide/slide_2.png" alt="Slide" />
+        <img src="../template/slide/slide_9.png" alt="Slide" />
+        <img src="../template/slide/slide_5.png" alt="Slide" />
+        <img src="../template/slide/slide_6.png" alt="Slide" />
+        <img src="../template/slide/slide_7.png" alt="Slide" />
+        <img src="../template/slide/slide_8.png" alt="Slide" />
+      </div>
+      <br />
+      <div class="carousel-1">
+        <img src="../template/slide/slide_10.png" alt="Slide" />
+        <img src="../template/slide/slide_12.png" alt="Slide" />
+        <img src="../template/slide/slide_11.png" alt="Slide" />
+        <img src="../template/slide/slide_15.png" alt="Slide" />
+        <img src="../template/slide/slide_16.png" alt="Slide" />
+        <img src="../template/slide/slide_17.png" alt="Slide" />
+        <img src="../template/slide/slide_13.png" alt="Slide" />
+        <img src="../template/slide/slide_14.png" alt="Slide" />
+        <!-- repeat -->
+        <img src="../template/slide/slide_10.png" alt="Slide" />
+        <img src="../template/slide/slide_12.png" alt="Slide" />
+        <img src="../template/slide/slide_11.png" alt="Slide" />
+        <img src="../template/slide/slide_15.png" alt="Slide" />
+        <img src="../template/slide/slide_16.png" alt="Slide" />
+        <img src="../template/slide/slide_17.png" alt="Slide" />
+        <img src="../template/slide/slide_13.png" alt="Slide" />
+        <img src="../template/slide/slide_14.png" alt="Slide" />
+      </div>
+    </div>
+    <!-- Slide -->
+    <div class="container">
+      <div class="flower"></div>
+      <div class="leaf"></div>
+    </div>
+    <div style="text-align: center;color: #7a3d2c;">
+        <h3>Mọi người quan tâm và muốn ủng hộ sản phẩm của Sương Ban Mai Quilling xin vui lòng liên hệ</h3>
+    </div>
+    <br>
+    <footer class="footer">
+      <div class="footer-content">
+        <p>&copy; 2024 Your Website</p>
+        <nav>
+          <ul class="list-unstyled footer-links">
+            <li>
+              <a href="https://www.facebook.com/langquilliing94">
+                <i class="fab fa-facebook-f"></i> Facebook: Sương Ban Mai Quilling
+              </a>
+            </li>
+            <li>
+              <a href="mailto:hothilang160694@gmail.com">
+                <i class="fas fa-envelope"></i> Email: hothilang160694@gmail.com
+              </a>
+            </li>
+            <li>
+              <a href="tel:0968119518">
+                <i class="fas fa-phone-alt"></i> Điện thoại:096 811 95 18
+              </a>
+            </li>
+            <li>
+              <i class="fas fa-map-marker-alt"></i> Địa chỉ: Hòa Phước - Hòa Vang - Đà Nẵng
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+    
+    
+    
+
+    <!-- JavaScript and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      function generateImage() {
+        const name = document.getElementById("inputName").value;
+        const gender = document.querySelector(
+          'input[name="gender"]:checked'
+        ).value;
+
+        let templateSrc;
+        if (gender === "Nam") {
+          templateSrc = "../template/image/canvas_male.png"; // Replace with the actual path to the male template
+        } else if (gender === "Nữ") {
+          templateSrc = "../template/image/canvas_fml.jpg"; // Replace with the actual path to the female template
+        } else {
+          templateSrc = "../template/image/canvas_casual.jpg"; // Replace with the actual path to the other template
+        }
+
+        const canvas = document.getElementById("generatedCanvas");
+        const ctx = canvas.getContext("2d");
+        const img = new Image();
+
+        img.src = templateSrc;
+        img.onload = () => {
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          ctx.font = " italic 50px Dancing Script";
+          ctx.fillStyle = "red"; // Adjust the color as needed
+          ctx.textAlign = "center";
+          ctx.fillText(name, 840, 1836); // Adjust the position as needed
+
+          const generatedImage = document.getElementById("generatedImage");
+          generatedImage.src = canvas.toDataURL("image/png");
+
+          const downloadButton = document.getElementById("downloadButton");
+          downloadButton.href = canvas.toDataURL("image/png");
+          downloadButton.download = "sương_ban_mai.png";
+
+          $("#exampleModal").modal("hide");
+          $("#imageModal").modal("show");
+        };
+      }
+    </script>
+  </body>
+</html>
