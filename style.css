@@ -53,7 +53,6 @@ body {
   width: 100%;
   height: 400px; /* Chiều cao của carousel */
   position: relative;
-  z-index: 1; /* Đảm bảo carousel không nằm trên modal */
 }
 
 .carousel {
@@ -101,6 +100,7 @@ body {
     transform: translateX(0);
   }
 }
+
 
 .container {
   position: relative;
@@ -184,110 +184,79 @@ body {
 }
 
 .footer {
-  background-color: #F8D7CE;
-  padding: 20px 0;
-  text-align: center;
-}
-
-.footer-content {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-ul.footer-links {
-  padding: 0;
-  list-style: none;
-}
-
-ul.footer-links li {
-  display: inline-block;
-  margin-right: 20px;
-}
-
-ul.footer-links li:last-child {
-  margin-right: 0;
-}
-
-ul.footer-links li a {
-  color: #333;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-ul.footer-links li a:hover {
-  color: #c0392b;
-}
-
-.modal {
-  z-index: 1050;
-}
-
-.modal-backdrop {
-  z-index: 1040;
-}
-
-body.modal-open {
-  overflow-y: hidden; /* Ngăn không cho cuộn khi modal mở */
-}
-
-.modal-dialog {
-  max-width: 90%; /* Điều chỉnh kích thước modal trên màn hình nhỏ */
-  margin: 0 auto;
-}
-
-.modal-content {
-  border-radius: 10px; /* Bo tròn góc cho modal */
-  overflow: hidden;
-}
-
-.modal-body {
-  padding: 20px;
-  text-align: center;
-}
-
-#generatedCanvas {
-  max-width: 100%; /* Đảm bảo canvas hiển thị đúng kích thước */
-  height: auto;
-}
-
-@media (max-width: 576px) {
-  .card-body-custom {
-    padding: 10px;
-  }
-
-  .modal-dialog {
-    width: 100%;
-    margin: 0;
-  }
-
-  .modal-content {
-    border-radius: 0;
-  }
-
-  .btn-group-toggle .btn {
-    font-size: 12px;
-  }
-}
-
-/* Thêm các CSS Media Queries để điều chỉnh cho điện thoại */
-@media screen and (max-width: 768px) {
-  .card-custom {
-    flex-direction: column; /* Hiển thị các phần tử theo chiều dọc */
-    height: auto; /* Cho phép chiều cao tự động thích ứng với nội dung */
-  }
-
-  .card-img-custom {
-    max-width: 100%; /* Đảm bảo hình ảnh điều chỉnh theo chiều rộng của card */
-    height: auto; /* Cho phép chiều cao tự động thích ứng */
-    border-radius: 10px 10px 0 0; /* Bo tròn góc chỉ ở trên */
-  }
-
-  .card-body-custom {
-    padding: 20px; /* Giữ nguyên khoảng cách giữa nội dung và các cạnh của card */
-    overflow-y: auto; /* Thêm thanh cuộn nếu nội dung quá dài */
+    background-color: #F8D7CE;
+    padding: 20px 0;
+    text-align: center;
   }
   
-  .card-title {
-    margin-top: 20px; /* Tăng khoảng cách giữa tiêu đề và hình ảnh */
+  .footer-content {
+    max-width: 800px;
+    margin: 0 auto;
   }
-}
+  
+  ul.footer-links {
+    padding: 0;
+    list-style: none;
+  }
+  
+  ul.footer-links li {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  
+  ul.footer-links li:last-child {
+    margin-right: 0;
+  }
+  
+  ul.footer-links li a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  ul.footer-links li a:hover {
+    color: #c0392b;
+  }
+  
+  
+  @media (max-width: 576px) {
+    .card-body-custom {
+      padding: 10px;
+    }
+  
+    .modal-dialog {
+      width: 100%;
+      margin: 0;
+    }
+  
+    .modal-content {
+      border-radius: 0;
+    }
+  
+    .btn-group-toggle .btn {
+      font-size: 12px;
+    }
+  }
+  
+  /* Thêm các CSS Media Queries để điều chỉnh cho điện thoại */
+  @media screen and (max-width: 768px) {
+    .card-custom {
+      flex-direction: column; /* Hiển thị các phần tử theo chiều dọc */
+      height: auto; /* Cho phép chiều cao tự động thích ứng với nội dung */
+    }
+  
+    .card-img-custom {
+      max-width: 100%; /* Đảm bảo hình ảnh điều chỉnh theo chiều rộng của card */
+      height: auto; /* Cho phép chiều cao tự động thích ứng */
+      border-radius: 10px 10px 0 0; /* Bo tròn góc chỉ ở trên */
+    }
+  
+    .card-body-custom {
+      padding: 20px; /* Giữ nguyên khoảng cách giữa nội dung và các cạnh của card */
+      overflow-y: auto; /* Thêm thanh cuộn nếu nội dung quá dài */
+    }
+    
+    .card-title {
+      margin-top: 20px; /* Tăng khoảng cách giữa tiêu đề và hình ảnh */
+    }
+  }

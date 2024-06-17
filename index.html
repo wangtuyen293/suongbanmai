@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sương Ban Mai</title>
+    <meta property="og:title" content="Sương Ban Mai">
+    <meta property="og:url" content="https://wangtuyen293.github.io/suongbanmai/">
+    <link rel="icon" type="image/png" href="./image/logo.png">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-8fZGEFx9b3SP/b5tysa9eT6AKn5fPMCMIsj3IrveZ4Vr5F58jUur6jvHEt0tQk0Xr0WtZ91bFET+R0uAzzm2LA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -209,6 +212,7 @@
             const ctx = canvas.getContext("2d");
             const img = new Image();
 
+            const font = new FontFace('Pecita', 'url(./fonts/Pecita-Regular.ttf)');
             img.src = templateSrc;
             img.onload = () => {
                 ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
