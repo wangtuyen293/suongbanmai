@@ -77,7 +77,7 @@
 
                         <!-- Modal for Displaying Generated Image -->
                         <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document"  style="height: 90%;"">
+                            <div class="modal-dialog modal-dialog-centered" role="document"  style="height: 80%;overflow-y: scroll;"">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="imageModalLabel">Cảm ơn bạn đã lan toả dự án</h5>
@@ -86,10 +86,12 @@
                                         </button>
                                     </div>
                                     <div class="modal-body text-center">
+                                        
                                         <canvas id="generatedCanvas" width="1269.6" height="1796" style="display: none"></canvas>
-                                        <img id="generatedImage" src="" alt="Generated Image" style="max-width: 80%">
+                                        <img id="generatedImage" src="" alt="Generated Image" style="max-width: 80%">  
+                                        <h7>(NOTE:NHẤN GIỮ ẢNH ĐỂ LƯU)</h7>                                      
                                     </div>
-                                    <div class="modal-footer">
+                                    <div class="modal-footer" style="align-items: center;">                                      
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                                         <a id="downloadButton" class="btn btn-primary">Tải xuống hình ảnh</a>
                                     </div>
@@ -198,7 +200,6 @@
         function generateImage() {
             const name = document.getElementById("inputName").value;
             const gender = document.querySelector('input[name="gender"]:checked').value;
-
             let templateSrc;
             if (gender === "Nam") {
                 templateSrc = "./image/canvas_male.png"; // Replace with the actual path to the male template
@@ -211,15 +212,13 @@
             const canvas = document.getElementById("generatedCanvas");
             const ctx = canvas.getContext("2d");
             const img = new Image();
-
-            const font = new FontFace('Pecita', 'url(./fonts/Pecita-Regular.ttf)');
             img.src = templateSrc;
             img.onload = () => {
                 ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
                 ctx.font = "italic 50px Dancing Script";
                 ctx.fillStyle = "red"; // Adjust the color as needed
                 ctx.textAlign = "center";
-                ctx.fillText(name, 840, 1836); // Adjust the position as needed
+                ctx.fillText(name, 672, 1468.8); // Adjust the position as needed
 
                 const generatedImage = document.getElementById("generatedImage");
                 generatedImage.src = canvas.toDataURL("image/png");
